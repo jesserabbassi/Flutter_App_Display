@@ -30,16 +30,19 @@ class _WebAppScreenState extends State<WebAppScreen> {
   @override
   void initState() {
     super.initState();
+
     controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setNavigationDelegate(
         NavigationDelegate(
           onWebResourceError: (error) {
-            debugPrint(error.description);
+            debugPrint('Error: ${error.description}');
           },
         ),
       )
-      ..loadRequest(Uri.parse('https://ooredoo-app-1.onrender.com'));
+      ..loadRequest(
+        Uri.parse('https://ooredoo-app-1.onrender.com/login'),
+      );
   }
 
   @override
